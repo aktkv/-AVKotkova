@@ -1,0 +1,32 @@
+stages: # Описание этапов
+    - build
+    - test
+    - deploy
+
+Docker build: # Описание джоб
+    stage: build #  Закрепить на каком этапе находится джоба 
+    script: # что делает джоба
+        - echo 'docker build is successfull' 
+    tags: # при создании Runner указывала тег, если брать его , тогда он брать будет только те задачи, которые удовлетворяют данному тегу , либо в настройках выбрать, что можно работать без тегов, и тогда он будет брать джобы и без тегов 
+        - docker
+
+Unit test:
+    stage: test
+    script: 
+        - echo 'this is unit test!'      
+    tags:
+        - docker
+
+Linters:
+    stage: test
+    script: 
+        - echo 'this is linters test!'      
+    tags:
+        - docker
+
+Deploy to Dev:
+    stage: deploy
+    script: 
+        - echo '${CI_PROJECT_NAME} from branch ${CI_COMMIT_REF_SLUG} [#${CI_COMMIT_SHORT_SHA}]' >> ~/build.txt
+    tags:
+        - dev-shell
