@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.open;
+
 public class SeminarsTest {
     SeminarsPage seminarsPage = new SeminarsPage();
 
@@ -48,5 +50,14 @@ public class SeminarsTest {
                 .checkLinkStars()
                 .checkLinkWatching()
                 .checkLinkForks();
+    }
+
+    @Test
+    public void test_5() {
+        open("https://github.com/MNYudina/Seminars/stargazers");
+
+        seminarsPage
+                .checkLinkBorder("aktkv")
+                .checkLinkBorder("AnnFylkovskay");
     }
 }
