@@ -61,6 +61,11 @@ public class SeminarsPage {
         return this;
     }
 
+    public SeminarsPage clickLinkStars() {
+        $(byLinkText("/MNYudina/Seminars/stargazers")).click();
+        return this;
+    }
+
     public SeminarsPage checkLinkWatching() {
         $(byLinkText("watching")).shouldHave(text("watching"),attribute("href", URL +"Seminars/watchers"));
         return this;
@@ -71,5 +76,14 @@ public class SeminarsPage {
         return this;
     }
 
+    public SeminarsPage checkLinkBorder(String value) {
+        listBorder
+                .find(text(value))
+                .shouldBe(visible);
+        return this;
+    }
+
     private final ElementsCollection listDocInTable = $$("[class^='Details-content--hidden-not-important']");
+
+    private final ElementsCollection listBorder = $$("[class^='border-bottom']");
 }
