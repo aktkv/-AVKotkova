@@ -1,16 +1,15 @@
-import com.codeborne.selenide.Condition;
+
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byLinkText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class SeminarsPage {
-    private String URL = "https://github.com/MNYudina/";
+public class SeminarsPage extends Contains{
+
 
     public SeminarsPage openPage() {
-        open(URL + "Seminars");
+        Contains.openPageBase(Contains.SITE_URL + "Seminars");
         return this;
     }
 
@@ -52,12 +51,12 @@ public class SeminarsPage {
     }
 
     public SeminarsPage checkLinkReadme() {
-        $(byLinkText("Readme")).shouldHave(text("Readme"),attribute("href", URL + "Seminars#readme"));
+        $(byLinkText("Readme")).shouldHave(text("Readme"),attribute("href", Contains.SITE_URL + "Seminars#readme"));
         return this;
     }
 
     public SeminarsPage checkLinkStars() {
-        $(byLinkText("/MNYudina/Seminars/stargazers")).shouldHave(text("stars"),attribute("href", URL +"Seminars/stargazers"));
+        $(byLinkText("/MNYudina/Seminars/stargazers")).shouldHave(text("stars"),attribute("href", Contains.SITE_URL +"Seminars/stargazers"));
         return this;
     }
 
@@ -67,12 +66,12 @@ public class SeminarsPage {
     }
 
     public SeminarsPage checkLinkWatching() {
-        $(byLinkText("watching")).shouldHave(text("watching"),attribute("href", URL +"Seminars/watchers"));
+        $(byLinkText("watching")).shouldHave(text("watching"),attribute("href", Contains.SITE_URL +"Seminars/watchers"));
         return this;
     }
 
     public SeminarsPage checkLinkForks() {
-        $(byLinkText("forks")).shouldHave(text("forks"),attribute("href", URL +"Seminars/network/members"));
+        $(byLinkText("forks")).shouldHave(text("forks"),attribute("href", Contains.SITE_URL +"Seminars/network/members"));
         return this;
     }
 
